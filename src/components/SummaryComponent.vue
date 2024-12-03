@@ -72,6 +72,7 @@ export default {
 .summary-title {
   font-size: 18px;
   font-weight: bold;
+  color: #fff;
   margin: 0;
   padding-bottom: 8px;
 }

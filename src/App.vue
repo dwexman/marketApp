@@ -10,6 +10,10 @@
         <div class="chart-wrapper">
           <ChartComponent :selectedInstrument="selectedInstrument" />
         </div>
+        <div class="instrument-container">
+          <TabComponent />
+          <ListComponent />
+        </div>
       </div>
     </div>
   </div>
@@ -20,6 +24,8 @@ import SearchBarComponent from "./components/SearchBarComponent.vue";
 import HeaderComponent from "./components/HeaderComponent.vue";
 import SummaryComponent from "./components/SummaryComponent.vue";
 import ChartComponent from "./components/ChartComponent.vue";
+import TabComponent from "./components/TabComponent.vue";
+import ListComponent from "./components/InstrumentListComponent.vue";
 import { ref } from "vue";
 
 export default {
@@ -28,6 +34,8 @@ export default {
     HeaderComponent,
     SummaryComponent,
     ChartComponent,
+    TabComponent,
+    ListComponent,
   },
   setup() {
     const selectedInstrument = ref("IPSA");
@@ -39,24 +47,18 @@ export default {
 </script>
 
 <style>
-/* Estilo Global */
 body {
+  background-color: #000; 
   margin: 0;
   padding: 0;
-  background-color: #000; 
-  font-family: Arial, sans-serif;
 }
 
-/* App */
 #app {
-  background-color: #000;
-  color: #fff;
-  height: 100vh;
-  width: 100vw;
+  background-color: transparent; 
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  box-sizing: border-box;
+  gap: 20px;
 }
 
 /* Layout */
@@ -76,25 +78,54 @@ body {
 /* Header + Summary */
 .header-summary-row {
   display: flex;
-  flex-direction: row; 
-  justify-content: space-between; 
-  align-items: baseline; 
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start; 
   width: 100%;
   margin-bottom: 20px;
+  z-index: 2; 
 }
 
 /* Chart Wrapper */
 .chart-wrapper {
   position: relative;
-  margin-top: -200px; 
-  max-width: 100%;
-  height: 800px; 
-  overflow: hidden; 
-  padding: 0 10px;
+  margin-top: -130px;
+  margin-left: 50px;
+  width: 100%; 
+  height: 600px; 
+  margin-bottom: 20px; 
+  padding: 0;
+  background-color: #000; 
 }
 
-.chart-wrapper canvas {
-  max-width: 100%; 
-  height: 100%;
+/* Instrument Container */
+.instrument-container {
+  background-color: #000;
+  margin-top: -280px; 
+  z-index: 2;
+}
+
+/* Tabs */
+.tab-component {
+  margin-top: 0px;
+  background-color: #fff;
+  color: #000; 
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.tab-component button {
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  margin: 0 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.tab-component button.active {
+  background-color: #007bff; 
+  color: #fff; 
 }
 </style>

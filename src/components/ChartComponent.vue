@@ -35,7 +35,7 @@ export default {
     const chartData = ref([]);
     const filteredData = ref([]);
     const chartInstance = ref(null);
-    const chartCanvas = ref(null); 
+    const chartCanvas = ref(null);
 
     const selectedPeriod = ref("1D");
     const periods = ref([
@@ -57,7 +57,7 @@ export default {
 
         if (chartData.value.length) {
           filterData();
-          await nextTick(); // Espera a que el DOM esté completamente renderizado
+          await nextTick();
           renderChart();
         } else {
           console.error("Los datos del gráfico están vacíos.");
@@ -152,14 +152,14 @@ export default {
     const updatePeriod = async (period) => {
       selectedPeriod.value = period;
       filterData();
-      await nextTick(); // Asegurar que el DOM esté actualizado
+      await nextTick();
       renderChart();
     };
 
     onMounted(loadChartData);
 
     watch(() => props.selectedInstrument, async () => {
-      await nextTick(); // Esperar el DOM al cambiar instrumento
+      await nextTick();
       loadChartData();
     });
 
@@ -178,16 +178,16 @@ export default {
 <style>
 .chart-container {
   width: 100%; 
-  height: 400px; 
+  height: 800px; 
   display: flex;
   flex-direction: column;
   align-items: flex-start; 
   background-color: #000; 
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 canvas {
-  max-width: 100%;
+  width: 100%; 
   height: 100%; 
 }
 

@@ -1,0 +1,24 @@
+/* Estilo Global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #000; 
+    color: #fff; 
+    font-family: Arial, sans-serif;
+  }
+  
+  html, body {
+    height: 100%; 
+    width: 100%;
+  }
+  
+  #app {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
